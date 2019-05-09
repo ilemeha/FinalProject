@@ -26,17 +26,18 @@ namespace AutomationFinal.Pages
         private IWebElement HoverAdminLink => _driver.FindElement(By.LinkText("admin"));
         private IWebElement LogoutClickLink => _driver.FindElement(By.XPath("//ul[@class='dropdown-menu']//a"));
         private IWebElement LoginCheckTitle => _driver.FindElement(By.TagName("h2"));
-
-        public void FillOutLoginData(LoginData loginInfo)
+        
+        public void FillOutLoginData(LoginData logInf)
         {
-            LoginInput.SendKeys(loginInfo.LoginD);
-            PasswordInput.SendKeys(loginInfo.PasswordData);
+            LoginInput.SendKeys(logInf.LoginD);
+            PasswordInput.SendKeys(logInf.PasswordData);
 
         }
         public void ClickLoginButton()
         {
             ClickLogin.Click();
         }
+        
 
         public string CheckClientPageTitle()
         {
@@ -57,6 +58,7 @@ namespace AutomationFinal.Pages
         {
             return LoginCheckTitle.Text;
         }
+ 
     }
 }
 

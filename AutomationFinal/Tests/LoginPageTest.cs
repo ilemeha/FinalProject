@@ -5,10 +5,11 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using NUnit.Framework;
 using Shouldly;
-using AutomationFinal.TestData;
 using AutomationFinal.WebDriver;
 using AutomationFinal.Configuration;
 using AutomationFinal.Pages;
+using AutomationFinal.Methods;
+using AutomationFinal.TestData;
 
 namespace AutomationFinal.Tests
 {
