@@ -65,18 +65,17 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Configuration\Config.cs" />
     <Compile Include="Methods\LoginMethods.cs" />
-    <Compile Include="Pages\LoginLogoutPage.cs" />
+    <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestData\LoginData.cs" />
+    <Compile Include="Tests\LoginPageTest.cs" />
     <Compile Include="WebDriver\DriverUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TestData\" />
-    <Folder Include="Tests\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
