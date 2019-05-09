@@ -18,11 +18,8 @@ namespace AutomationFinal.Pages
         {
             _driver = driver;
         }
-        private IWebElement LoginInp => _driver.FindElement(By.Id("username"));
-        private IWebElement PasswordInp => _driver.FindElement(By.Id("password"));
-        private IWebElement ClickLoginButton => _driver.FindElement(By.XPath("//*[@id='root']/div/div/form/div[3]/div/div/button/span"));
-        private IWebElement ClientPageHead => _driver.FindElement(By.TagName("h2"));
 
+        private IWebElement ClientPageHead => _driver.FindElement(By.TagName("h2"));
 
         private IWebElement ClickAddClientLink => _driver.FindElement(By.LinkText("Add Client"));
         private SelectElement TeacherDropdown => new SelectElement(_driver.FindElement(By.Name("teacherId")));
@@ -37,13 +34,9 @@ namespace AutomationFinal.Pages
         private IWebElement SaveButton => _driver.FindElement(By.XPath("//*[@id='root']/div/div/form/div[22]/div/div/button"));
         private IWebElement VerifyClientTable => _driver.FindElement(By.XPath("//th[.='Teacher']"));
 
-        public void FillOutLoginData(LoginData logInf)
-        {
-            LoginInp.SendKeys(logInf.LoginD);
-            PasswordInp.SendKeys(logInf.PasswordData);
-            ClickLoginButton.Click();
-        }
-
+        private IWebElement UploadFile => _driver.FindElement(By.ClassName("filepond--label-action"));
+        private IWebElement FinishUploadFile => _driver.FindElement(By.XPath("//input[@type='text']"));
+      
         public string CheckClientPageTitle()
         {
             return ClientPageHead.Text;
@@ -61,22 +54,27 @@ namespace AutomationFinal.Pages
             AddClientCompany.SendKeys(companyN);
         }
 
-        public void FillOutContactInformation(string personF, string personL)
+        public void FillOutContactInformation(Person person)
         {
-            FirstNameInput.SendKeys(personF);
-            LastNameInput.SendKeys(personL);           
+            FirstNameInput.SendKeys(person.FirstName);
+            LastNameInput.SendKeys(person.LastName);           
         }
         public void ChooseState(string stateName)
         {
             StateInput.SelectByText(stateName);
         }
-
-        public void AddressInfo(string zipcode, string phone, string email)
+        public void ZipInfo(string zipcode)
         {
             ZipInput.SendKeys(zipcode);
-            PhoneNumberInput.SendKeys(phone);
-            EmailInput.SendKeys(email);
+
         }
+        public void AddressInfo(Person person)
+        {
+            
+            PhoneNumberInput.SendKeys(person.PhoneNumber);
+            EmailInput.SendKeys(person.Email);
+        }
+      
 
         public void ClickSaveButton()
         {
@@ -85,6 +83,17 @@ namespace AutomationFinal.Pages
         public string TableClient()
         {
             return VerifyClientTable.Text;
+        }
+        
+        public void UploadDoc()
+        {
+            UploadFile.Click();
+           
+        }
+
+        public void FinisheUpl(string fileUrl)
+        {
+            FinishUploadFile.SendKeys(fileUrl);
         }
     }
 
