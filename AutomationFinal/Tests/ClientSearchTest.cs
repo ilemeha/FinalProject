@@ -14,14 +14,12 @@ using AutomationFinal.TestData;
 namespace AutomationFinal.Tests
 {
     [TestFixture]
-    public class AddClientPageTest
+    public class ClientSearchTest
     {
         [Test]
-        public void AddClientTest()
+        public void ClientSearch()
         {
             var loginInfo = new LoginData();
-            var person = new Person();
-
 
             using (var driver = DriverUtils.CreateWebDriver())
             {
@@ -33,21 +31,13 @@ namespace AutomationFinal.Tests
                 accessLoginPage.ClickLoginButton();
                 accessLoginPage.CheckClientPageTitle().ShouldBe("Clients");
 
-                var logClientPage = new AddClientPage(driver);
-                logClientPage.ClickAddClient();
-                logClientPage.SelectTeacher("9");
-                logClientPage.TypeClientCompany("FoxNews");
-                logClientPage.FillOutContactInformation(person);
-                logClientPage.ChooseState("Iowa");
-                logClientPage.AddressInfo(person);
-                logClientPage.ZipInfo("60755");
-                logClientPage.UploadDoc();
-                logClientPage.FinisheUpl("C:\\Users\\Iryna Lemeha\\Desktop\\Chapter.txt");
-                Thread.Sleep(3000);
-            
-                logClientPage.ClickSaveButton();
-                logClientPage.TableClient().ShouldBe("Teacher");
-                Thread.Sleep(3000);
+                var clientSearchPage = new ClientSearchPage(driver);
+                clientSearchPage.SearchClientBox("ilka@mailinator.com");
+                clientSearchPage.ClickSearchButton();
+                clientSearchPage.VerifyTable1().ShouldBe("Teacher");
+                clientSearchPage.VerifyTable2().ShouldBe("First Name");
+                clientSearchPage.StudentFName().ShouldBe("Iryna");
+                clientSearchPage.StudentLName().ShouldBe("Shch");
             }
         }
     }

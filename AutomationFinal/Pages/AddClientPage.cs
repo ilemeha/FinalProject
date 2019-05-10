@@ -19,8 +19,6 @@ namespace AutomationFinal.Pages
             _driver = driver;
         }
 
-        private IWebElement ClientPageHead => _driver.FindElement(By.TagName("h2"));
-
         private IWebElement ClickAddClientLink => _driver.FindElement(By.LinkText("Add Client"));
         private SelectElement TeacherDropdown => new SelectElement(_driver.FindElement(By.Name("teacherId")));
         private IWebElement AddClientCompany => _driver.FindElement(By.Name("company"));
@@ -36,11 +34,7 @@ namespace AutomationFinal.Pages
 
         private IWebElement UploadFile => _driver.FindElement(By.ClassName("filepond--label-action"));
         private IWebElement FinishUploadFile => _driver.FindElement(By.XPath("//input[@type='text']"));
-      
-        public string CheckClientPageTitle()
-        {
-            return ClientPageHead.Text;
-        }
+
         public void ClickAddClient()
         {
             ClickAddClientLink.Click();

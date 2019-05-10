@@ -14,15 +14,13 @@ using AutomationFinal.TestData;
 namespace AutomationFinal.Tests
 {
     [TestFixture]
-    public class AddClientPageTest
+    public class DeleteClientTest
     {
         [Test]
-        public void AddClientTest()
+        public void DeleteClient()
         {
             var loginInfo = new LoginData();
             var person = new Person();
-
-
             using (var driver = DriverUtils.CreateWebDriver())
             {
                 driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
@@ -41,12 +39,19 @@ namespace AutomationFinal.Tests
                 logClientPage.ChooseState("Iowa");
                 logClientPage.AddressInfo(person);
                 logClientPage.ZipInfo("60755");
-                logClientPage.UploadDoc();
-                logClientPage.FinisheUpl("C:\\Users\\Iryna Lemeha\\Desktop\\Chapter.txt");
+                //logClientPage.UploadDoc();
+                //logClientPage.FinisheUpl("C:\\Users\\Iryna Lemeha\\Desktop\\Chapter.txt");
                 Thread.Sleep(3000);
-            
+
                 logClientPage.ClickSaveButton();
                 logClientPage.TableClient().ShouldBe("Teacher");
+                Thread.Sleep(3000);
+
+                var deleteClient = new DeleteClientPage(driver);
+                deleteClient.GetDeleteLink();
+                deleteClient.VerifyPopupText().ShouldBe("Are you sure?");
+                deleteClient.ClickConfirm();
+
                 Thread.Sleep(3000);
             }
         }

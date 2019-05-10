@@ -11,18 +11,17 @@ using AutomationFinal.Pages;
 using AutomationFinal.Methods;
 using AutomationFinal.TestData;
 
+
 namespace AutomationFinal.Tests
 {
     [TestFixture]
-    public class AddClientPageTest
+    public class EditClientTest
     {
         [Test]
-        public void AddClientTest()
+        public void EditClient()
         {
             var loginInfo = new LoginData();
             var person = new Person();
-
-
             using (var driver = DriverUtils.CreateWebDriver())
             {
                 driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
@@ -41,14 +40,25 @@ namespace AutomationFinal.Tests
                 logClientPage.ChooseState("Iowa");
                 logClientPage.AddressInfo(person);
                 logClientPage.ZipInfo("60755");
-                logClientPage.UploadDoc();
-                logClientPage.FinisheUpl("C:\\Users\\Iryna Lemeha\\Desktop\\Chapter.txt");
+                //logClientPage.UploadDoc();
+                //logClientPage.FinisheUpl("C:\\Users\\Iryna Lemeha\\Desktop\\Chapter.txt");
                 Thread.Sleep(3000);
-            
+
                 logClientPage.ClickSaveButton();
                 logClientPage.TableClient().ShouldBe("Teacher");
                 Thread.Sleep(3000);
+
+
+                var editClient = new EditClientPage(driver);
+                editClient.GetClientID();
+                editClient.VerifyEditTitle().ShouldBe("Edit Client");
+                editClient.ChangeClient("Oksana", "Morozko", "okmoroska@gmail.com");
+                editClient.ClickSaveButton();
+                Thread.Sleep(3000);
+
+
             }
         }
+
     }
 }
