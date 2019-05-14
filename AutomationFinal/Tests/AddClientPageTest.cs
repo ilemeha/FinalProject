@@ -22,7 +22,6 @@ namespace AutomationFinal.Tests
             var loginInfo = new LoginData();
             var person = new Person();
 
-
             using (var driver = DriverUtils.CreateWebDriver())
             {
                 driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
@@ -47,6 +46,10 @@ namespace AutomationFinal.Tests
             
                 logClientPage.ClickSaveButton();
                 logClientPage.TableClient().ShouldBe("Teacher");
+
+				//TODO: you are verifying the table shows up, but you are not verifying your student is there. The table could be empty...
+
+				//TODO: no need for this one
                 Thread.Sleep(3000);
             }
         }

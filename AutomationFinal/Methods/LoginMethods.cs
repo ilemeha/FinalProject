@@ -16,6 +16,8 @@ namespace AutomationFinal.Methods
             driver.FindElement(By.XPath("//*[@id='root']/div/div/form/div[3]/div/div/button/span")).Click();
         }
     }*/
+
+	//TODO: this method is not used. The entire class can be removed.
     public class LoginUtilsNonStatic
     {
         public void LoginNonStatic(IWebDriver driver)

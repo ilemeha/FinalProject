@@ -20,14 +20,22 @@ namespace AutomationFinal.Pages
         }
         private IWebElement LoginInput => _driver.FindElement(By.Id("username"));  
         private IWebElement PasswordInput => _driver.FindElement(By.Id("password"));
+
+		//TODO: this XPath has to be improved.
         private IWebElement ClickLogin => _driver.FindElement(By.XPath("//*[@id='root']/div/div/form/div[3]/div/div/button/span"));
-        private IWebElement ClientPageTitle => _driver.FindElement(By.TagName("h2"));
-        private IWebElement AdminLink => _driver.FindElement(By.LinkText("admin"));
+
+		//TODO: these two elements have the same locators... Looks weird...
+		private IWebElement AdminLink => _driver.FindElement(By.LinkText("admin"));
         private IWebElement HoverAdminLink => _driver.FindElement(By.LinkText("admin"));
-        private IWebElement LogoutClickLink => _driver.FindElement(By.XPath("//ul[@class='dropdown-menu']//a"));
-        private IWebElement LoginCheckTitle => _driver.FindElement(By.TagName("h2"));
-        
-        public void FillOutLoginData(LoginData logInf)
+
+        //TODO: these two elements have the same locators... Looks weird...
+        private IWebElement LoginCheckTitle => _driver.FindElement(By.XPath("//h2[contains(., 'Login')]"));
+		private IWebElement ClientPageTitle => _driver.FindElement(By.XPath("//h2[contains(., 'Clients')]"));
+
+		//TODO: Please rename the element to LogoutLink. The element is just a link, you will click it with a special method. So currently the name of the element is confusing
+	    private IWebElement LogoutClickLink => _driver.FindElement(By.XPath("//ul[@class='dropdown-menu']//a"));
+
+		public void FillOutLoginData(LoginData logInf)
         {
             LoginInput.SendKeys(logInf.LoginD);
             PasswordInput.SendKeys(logInf.PasswordData);
@@ -37,14 +45,16 @@ namespace AutomationFinal.Pages
         {
             ClickLogin.Click();
         }
-        
 
-        public string CheckClientPageTitle()
+
+		//TODO: please rename the method to GetClientPageTitle()
+		public string CheckClientPageTitle()
         {
             return ClientPageTitle.Text;
         }
 
-        public string CheckAdminLink()
+		//TODO: please rename the method to Get...
+		public string CheckAdminLink()
         {
             return AdminLink.Text;
         }
@@ -54,7 +64,9 @@ namespace AutomationFinal.Pages
             LogoutClickLink.Click();
 
         }
-        public string CheckLoginPageTitle()
+
+	    //TODO: please rename the method to Get...
+		public string CheckLoginPageTitle()
         {
             return LoginCheckTitle.Text;
         }

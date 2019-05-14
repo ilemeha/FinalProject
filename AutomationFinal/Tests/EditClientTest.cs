@@ -40,15 +40,10 @@ namespace AutomationFinal.Tests
                 logClientPage.ChooseState("Iowa");
                 logClientPage.AddressInfo(person);
                 logClientPage.ZipInfo("60755");
-                //logClientPage.UploadDoc();
-                //logClientPage.FinisheUpl("C:\\Users\\Iryna Lemeha\\Desktop\\Chapter.txt");
-                Thread.Sleep(3000);
-
+                
                 logClientPage.ClickSaveButton();
                 logClientPage.TableClient().ShouldBe("Teacher");
-                Thread.Sleep(3000);
-
-
+                
                 var editClient = new EditClientPage(driver);
                 editClient.GetClientID();
                 editClient.VerifyEditTitle().ShouldBe("Edit Client");
@@ -56,9 +51,10 @@ namespace AutomationFinal.Tests
                 editClient.ClickSaveButton();
                 Thread.Sleep(3000);
 
+				//TODO: you need to add verification here - you have to verify "your changes are displayed on the Clients page"
 
-            }
-        }
+			}
+		}
 
     }
 }
