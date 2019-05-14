@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace AutomationFinal
 {
-    public class Class1
+	//TODO: this default class has to be removed
+	public class Class1
     {
     }
 }
