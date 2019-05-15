@@ -25,7 +25,7 @@ namespace AutomationFinal.Tests
 
             using (var driver = DriverUtils.CreateWebDriver())
             {
-                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(50);
                 driver.Navigate().GoToUrl(Config.GetUrl());
 
                 var accessLoginPage = new LoginPage(driver);
@@ -41,13 +41,17 @@ namespace AutomationFinal.Tests
                 logClientPage.ChooseState("Iowa");
                 logClientPage.AddressInfo(person);
                 logClientPage.ZipInfo("60755");
+                
                 logClientPage.UploadDoc();
-                logClientPage.FinisheUpl("C:\\Users\\Iryna Lemeha\\Desktop\\Chapter.txt");
-                Thread.Sleep(3000);
-            
+                Thread.Sleep(20000);
+                logClientPage.FinUpl();
+                // logClientPage.FinisheUpl("C:\\Users\\Iryna Lemeha\\Desktop\\Chapter.txt");
+                Thread.Sleep(20000);
+
                 logClientPage.ClickSaveButton();
+                Thread.Sleep(5000);
                 logClientPage.TableClient().ShouldBe("Teacher");
-                Thread.Sleep(3000);
+                Thread.Sleep(5000);
             }
         }
     }

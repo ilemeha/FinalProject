@@ -33,7 +33,7 @@ namespace AutomationFinal.Pages
         private IWebElement VerifyClientTable => _driver.FindElement(By.XPath("//th[.='Teacher']"));
 
         private IWebElement UploadFile => _driver.FindElement(By.ClassName("filepond--label-action"));
-        private IWebElement FinishUploadFile => _driver.FindElement(By.XPath("//input[@type='text']"));
+        private IWebElement FinishUploadFile => _driver.FindElement(By.ClassName("filepond--drop-label"));
 
         public void ClickAddClient()
         {
@@ -51,7 +51,7 @@ namespace AutomationFinal.Pages
         public void FillOutContactInformation(Person person)
         {
             FirstNameInput.SendKeys(person.FirstName);
-            LastNameInput.SendKeys(person.LastName);           
+            LastNameInput.SendKeys(person.LastName);
         }
         public void ChooseState(string stateName)
         {
@@ -64,11 +64,11 @@ namespace AutomationFinal.Pages
         }
         public void AddressInfo(Person person)
         {
-            
+
             PhoneNumberInput.SendKeys(person.PhoneNumber);
             EmailInput.SendKeys(person.Email);
         }
-      
+
 
         public void ClickSaveButton()
         {
@@ -78,16 +78,22 @@ namespace AutomationFinal.Pages
         {
             return VerifyClientTable.Text;
         }
-        
+
         public void UploadDoc()
         {
             UploadFile.Click();
-           
+
         }
 
-        public void FinisheUpl(string fileUrl)
+        public void FinisheUpl()
         {
-            FinishUploadFile.SendKeys(fileUrl);
+            FinishUploadFile.SendKeys("C:\\Recovery.txt");
+
+        }
+        public void FinUpl()
+        {
+
+            FinishUploadFile.SendKeys(@"{ Enter}");
         }
     }
 

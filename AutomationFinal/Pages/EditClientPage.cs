@@ -21,6 +21,9 @@ namespace AutomationFinal.Pages
         private IWebElement LastNameInput => _driver.FindElement(By.Name("lastName"));
         private IWebElement EmailInput => _driver.FindElement(By.Name("email"));
         private IWebElement SaveInput => _driver.FindElement(By.XPath("//*[@id='root']/div/div/form/div[22]/div/div/button"));
+      
+        private IWebElement FNameChanges => _driver.FindElement(By.XPath("//*[@id='root']/div/div/div[3]/table/tbody/tr/td[3]"));
+        private IWebElement LNameChanges => _driver.FindElement(By.XPath("//*[@id='root']/div/div/div[3]/table/tbody/tr/td[4]"));
 
 
 
@@ -46,6 +49,18 @@ namespace AutomationFinal.Pages
         {
             SaveInput.Click();
         }
-    }
 
+
+        public string VerifyFNameChnages()
+        {
+            return FNameChanges.Text;
+           
+        }
+
+        public string VerifyLNameChnages()
+        {
+            return LNameChanges.Text;
+            
+        }
+    }
 }

@@ -26,11 +26,13 @@ namespace AutomationFinal.Tests
                 driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
                 driver.Navigate().GoToUrl(Config.GetUrl());
 
+                //Login to the application
                 var accessLoginPage = new LoginPage(driver);
                 accessLoginPage.FillOutLoginData(loginInfo);
                 accessLoginPage.ClickLoginButton();
                 accessLoginPage.CheckClientPageTitle().ShouldBe("Clients");
 
+                //Add a new client (as you did it in test case SST-002)
                 var logClientPage = new AddClientPage(driver);
                 logClientPage.ClickAddClient();
                 logClientPage.SelectTeacher("9");
@@ -48,11 +50,16 @@ namespace AutomationFinal.Tests
                 Thread.Sleep(3000);
 
                 var deleteClient = new DeleteClientPage(driver);
+                var clientID = deleteClient.SaveID();
                 deleteClient.GetDeleteLink();
                 deleteClient.VerifyPopupText().ShouldBe("Are you sure?");
-                deleteClient.ClickConfirm();
-
                 Thread.Sleep(3000);
+                deleteClient.ClickConfirm();
+                Thread.Sleep(5000);
+
+                deleteClient.ClientInputBox(clientID);
+                Thread.Sleep(5000);
+                deleteClient.SearchButton();
             }
         }
     }
