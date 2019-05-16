@@ -8,7 +8,6 @@ using Shouldly;
 using AutomationFinal.WebDriver;
 using AutomationFinal.Configuration;
 using AutomationFinal.Pages;
-using AutomationFinal.Methods;
 using AutomationFinal.TestData;
 
 namespace AutomationFinal.Tests

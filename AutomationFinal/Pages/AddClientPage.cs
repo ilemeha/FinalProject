@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using AutomationFinal.TestData;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using System.Windows.Forms;
+using System.Threading;
+using OpenQA.Selenium.Firefox;
 
 
 namespace AutomationFinal.Pages
@@ -30,10 +33,9 @@ namespace AutomationFinal.Pages
         private IWebElement PhoneNumberInput => _driver.FindElement(By.Name("phoneNumber"));
         private IWebElement EmailInput => _driver.FindElement(By.Name("email"));
         private IWebElement SaveButton => _driver.FindElement(By.XPath("//*[@id='root']/div/div/form/div[22]/div/div/button"));
-        private IWebElement VerifyClientTable => _driver.FindElement(By.XPath("//th[.='Teacher']"));
-
-        private IWebElement UploadFile => _driver.FindElement(By.ClassName("filepond--label-action"));
-        private IWebElement FinishUploadFile => _driver.FindElement(By.ClassName("filepond--drop-label"));
+        private IWebElement BrowseButton => _driver.FindElement(By.ClassName("filepond--label-action"));
+        private IWebElement FNameChanges => _driver.FindElement(By.XPath("//*[@id='root']/div/div/div[3]/table/tbody/tr/td[3]"));
+        private IWebElement LNameChanges => _driver.FindElement(By.XPath("//*[@id='root']/div/div/div[3]/table/tbody/tr/td[4]"));
 
         public void ClickAddClient()
         {
@@ -74,26 +76,35 @@ namespace AutomationFinal.Pages
         {
             SaveButton.Click();
         }
-        public string TableClient()
+
+    
+        //Click on browse  button to upload a file
+        public void ClickBrowseButton()
         {
-            return VerifyClientTable.Text;
+            BrowseButton.Click();
+         
         }
 
-        public void UploadDoc()
+        //Find document in the computer by URL
+        public void GetFileUrlUploaded(string fileURL)
         {
-            UploadFile.Click();
-
+            SendKeys.SendWait(fileURL);
+            Thread.Sleep(1000);
+            SendKeys.SendWait(@"{TAB}");
+            Thread.Sleep(1000);
+            SendKeys.SendWait(@"{TAB}");
+            Thread.Sleep(1000);
+            SendKeys.SendWait(@"{ENTER}");
+            Thread.Sleep(3000);
+        }
+        public string  GetFirstName()
+        {
+            return FNameChanges.Text;
         }
 
-        public void FinisheUpl()
+        public string GetLastName()
         {
-            FinishUploadFile.SendKeys("C:\\Recovery.txt");
-
-        }
-        public void FinUpl()
-        {
-
-            FinishUploadFile.SendKeys(@"{ Enter}");
+            return LNameChanges.Text;
         }
     }
 

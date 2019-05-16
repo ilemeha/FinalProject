@@ -8,8 +8,10 @@ using Shouldly;
 using AutomationFinal.WebDriver;
 using AutomationFinal.Configuration;
 using AutomationFinal.Pages;
-using AutomationFinal.Methods;
 using AutomationFinal.TestData;
+using System.Windows.Forms;
+using OpenQA.Selenium.Firefox;
+
 
 namespace AutomationFinal.Tests
 {
@@ -41,16 +43,18 @@ namespace AutomationFinal.Tests
                 logClientPage.ChooseState("Iowa");
                 logClientPage.AddressInfo(person);
                 logClientPage.ZipInfo("60755");
-                
-                logClientPage.UploadDoc();
-                Thread.Sleep(20000);
-                logClientPage.FinUpl();
-                // logClientPage.FinisheUpl("C:\\Users\\Iryna Lemeha\\Desktop\\Chapter.txt");
-                Thread.Sleep(20000);
+
+                logClientPage.ClickBrowseButton();
+                Thread.Sleep(2000);
+                logClientPage.GetFileUrlUploaded(@"C:\Users\Iryna Lemeha\Desktop\Chapter.txt");
+                Thread.Sleep(10000);
 
                 logClientPage.ClickSaveButton();
                 Thread.Sleep(5000);
-                logClientPage.TableClient().ShouldBe("Teacher");
+
+                logClientPage.GetFirstName().ShouldBe(person.FirstName);
+                logClientPage.GetLastName().ShouldBe(person.LastName);
+
                 Thread.Sleep(5000);
             }
         }
