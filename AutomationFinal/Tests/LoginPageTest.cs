@@ -31,9 +31,10 @@ namespace AutomationFinal.Tests
                 loginAccessPage.CheckClientPageTitle().ShouldBe("Clients");
                 loginAccessPage.CheckAdminLink().ShouldBe("admin");
                 loginAccessPage.ClickLogoutButton();
-                loginAccessPage.CheckClientPageTitle().ShouldBe("Login");
+                loginAccessPage.CheckLoginPageTitle().ShouldBe("Login");
 
-                Thread.Sleep(5000);
+				//TODO: this is useless. Plese remove.
+                //Thread.Sleep(5000);
             }
         }
     }

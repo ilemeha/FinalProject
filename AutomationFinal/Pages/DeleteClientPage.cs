@@ -44,10 +44,13 @@ namespace AutomationFinal.Pages
         {
            FindDeleteLink.Click();
         }
-        public string VerifyPopupText()
+
+		//TODO: rename to GetPopupText()
+		public string VerifyPopupText()
         {
             return VerifyPopup.Text;
         }
+
         public void ClickConfirm()
         {
             ClickConfirmButton.Click();

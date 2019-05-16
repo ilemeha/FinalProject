@@ -45,7 +45,6 @@ namespace AutomationFinal.Tests
                 //logClientPage.FinisheUpl("C:\\Users\\Iryna Lemeha\\Desktop\\Chapter.txt");
                 //Thread.Sleep(3000);
                 logClientPage.ClickSaveButton();
-                logClientPage.TableClient().ShouldBe("Teacher");
                 Thread.Sleep(3000);
 
                 var saveId = new DeleteClientPage(driver);
@@ -68,9 +67,10 @@ namespace AutomationFinal.Tests
                 editClient.VerifyLNameChnages().ShouldBe(changeLname);
 
 
+				//TODO: you need to add verification here - you have to verify "your changes are displayed on the Clients page"
 
-            }
-        }
+			}
+		}
 
     }
 }

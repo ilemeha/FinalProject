@@ -33,6 +33,7 @@ namespace AutomationFinal.Tests
 
                 //Add a new client (as you did it in test case SST-002)
                 var logClientPage = new AddClientPage(driver);
+
                 logClientPage.ClickAddClient();
                 logClientPage.SelectTeacher("9");
                 logClientPage.TypeClientCompany("FoxNews");
@@ -42,11 +43,14 @@ namespace AutomationFinal.Tests
                 logClientPage.ZipInfo("60755");
                 //logClientPage.UploadDoc();
                 //logClientPage.FinisheUpl("C:\\Users\\Iryna Lemeha\\Desktop\\Chapter.txt");
-                Thread.Sleep(3000);
+
+				//TODO: no need for this
+                //Thread.Sleep(3000);
 
                 logClientPage.ClickSaveButton();
-                logClientPage.TableClient().ShouldBe("Teacher");
-                Thread.Sleep(3000);
+
+	            //TODO: no need for this
+				//Thread.Sleep(3000);
 
                 var deleteClient = new DeleteClientPage(driver);
                 var clientID = deleteClient.SaveID();

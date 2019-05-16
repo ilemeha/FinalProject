@@ -24,7 +24,6 @@ namespace AutomationFinal.Tests
             var loginInfo = new LoginData();
             var person = new Person();
 
-
             using (var driver = DriverUtils.CreateWebDriver())
             {
                 driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(50);
