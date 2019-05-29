@@ -22,7 +22,7 @@ namespace AutomationFinal.Pages
         private IWebElement PasswordInput => _driver.FindElement(By.Id("password"));
 
 		//TODO: this XPath has to be improved.
-        private IWebElement ClickLogin => _driver.FindElement(By.XPath("//*[@id='root']/div/div/form/div[3]/div/div/button/span"));
+        private IWebElement ClickLogin => _driver.FindElement(By.XPath("//*[@id='root']/button[type='submit']"));
 
 		//TODO: these two elements have the same locators... Looks weird...
 		private IWebElement AdminLink => _driver.FindElement(By.LinkText("admin"));
