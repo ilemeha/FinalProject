@@ -24,6 +24,7 @@ namespace AutomationFinal.Tests
             {
                 driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
                 driver.Navigate().GoToUrl(Config.GetUrl());
+                //driver.Navigate().GoToUrl(Config.GetUrl(driver));
 
                 var loginAccessPage = new LoginPage(driver);
                 loginAccessPage.FillOutLoginData(loginInfo);

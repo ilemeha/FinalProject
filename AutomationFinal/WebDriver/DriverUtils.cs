@@ -22,7 +22,13 @@ namespace AutomationFinal.WebDriver
             }
             else if(browser== "FireFox")
             {
-                return new FirefoxDriver();
+          
+
+               return new FirefoxDriver();
+            }
+            else if (browser == "IE")
+            {
+                return new InternetExplorerDriver();
             }
             else
             {
