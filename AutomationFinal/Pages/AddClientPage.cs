@@ -22,16 +22,13 @@ namespace AutomationFinal.Pages
             _driver = driver;
         }
 
-		//TODO: please rename to AddClientLink
-        private IWebElement ClickAddClientLink => _driver.FindElement(By.LinkText("Add Client"));
+
+        private IWebElement AddClientLink => _driver.FindElement(By.LinkText("Add Client"));
         private SelectElement TeacherDropdown => new SelectElement(_driver.FindElement(By.Name("teacherId")));
         private IWebElement AddClientCompany => _driver.FindElement(By.Name("company"));
-
         private IWebElement FirstNameInput => _driver.FindElement(By.Name("firstName"));
         private IWebElement LastNameInput => _driver.FindElement(By.Name("lastName"));
-
-		//TODO: please rename to StateDropdown
-		private SelectElement StateInput => new SelectElement(_driver.FindElement(By.Name("state")));
+		private SelectElement StateDropdown => new SelectElement(_driver.FindElement(By.Name("state")));
         private IWebElement ZipInput => _driver.FindElement(By.Name("zipCode"));
         private IWebElement PhoneNumberInput => _driver.FindElement(By.Name("phoneNumber"));
         private IWebElement EmailInput => _driver.FindElement(By.Name("email"));
@@ -42,13 +39,9 @@ namespace AutomationFinal.Pages
         private IWebElement FNameChanges => _driver.FindElement(By.XPath("//*[@id='root']/div/div/div[3]/table/tbody/tr/td[3]"));
         private IWebElement LNameChanges => _driver.FindElement(By.XPath("//*[@id='root']/div/div/div[3]/table/tbody/tr/td[4]"));
 
-		//TODO: what this element is? If it's a button - rename it to UploadFileButton
-		private IWebElement UploadFile => _driver.FindElement(By.ClassName("filepond--label-action"));
-        private IWebElement FinishUploadFile => _driver.FindElement(By.XPath("//input[@type='text']"));
-
         public void ClickAddClient()
         {
-            ClickAddClientLink.Click();
+            AddClientLink.Click();
         }
         public void SelectTeacher(string teacherChoice)
         {
@@ -66,7 +59,7 @@ namespace AutomationFinal.Pages
         }
         public void ChooseState(string stateName)
         {
-            StateInput.SelectByText(stateName);
+            StateDropdown.SelectByText(stateName);
         }
 
 		//TODO: please rename the method to something like "FillOutZipInfo"

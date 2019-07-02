@@ -32,7 +32,7 @@ namespace AutomationFinal.Tests
                 var accessLoginPage = new LoginPage(driver);
                 accessLoginPage.FillOutLoginData(loginInfo);
                 accessLoginPage.ClickLoginButton();
-                accessLoginPage.CheckClientPageTitle().ShouldBe("Clients");
+                accessLoginPage.GetClientPageTitle().ShouldBe("Clients");
 
                 var logClientPage = new AddClientPage(driver);
                 logClientPage.ClickAddClient();

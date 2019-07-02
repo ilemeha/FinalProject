@@ -29,8 +29,8 @@ namespace AutomationFinal.Tests
                 var loginAccessPage = new LoginPage(driver);
                 loginAccessPage.FillOutLoginData(loginInfo);
                 loginAccessPage.ClickLoginButton();
-                loginAccessPage.CheckClientPageTitle().ShouldBe("Clients");
-                loginAccessPage.CheckAdminLink().ShouldBe("admin");
+                loginAccessPage.GetClientPageTitle().ShouldBe("Clients");
+                loginAccessPage.GetAdminLink().ShouldBe("admin");
                 loginAccessPage.ClickLogoutButton();
                 loginAccessPage.CheckLoginPageTitle().ShouldBe("Login");
 

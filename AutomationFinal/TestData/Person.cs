@@ -18,12 +18,11 @@ namespace AutomationFinal.TestData
         public string PhoneNumber;
         public string Email;
 
-
         public void SeedRandomData()
         {
             var faker = new Faker();
-            PhoneNumber = faker.Phone.PhoneNumber();
-            Email = faker.Internet.Email();
+            this.PhoneNumber = faker.Phone.PhoneNumber();
+            this.Email = faker.Internet.Email();
             this.FirstName = faker.Name.FirstName();
             this.LastName = faker.Name.LastName();
         }

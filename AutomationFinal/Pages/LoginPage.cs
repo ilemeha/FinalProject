@@ -48,13 +48,13 @@ namespace AutomationFinal.Pages
 
 
 		//TODO: please rename the method to GetClientPageTitle()
-		public string CheckClientPageTitle()
+		public string GetClientPageTitle()
         {
             return ClientPageTitle.Text;
         }
 
 		//TODO: please rename the method to Get...
-		public string CheckAdminLink()
+		public string GetAdminLink()
         {
             return AdminLink.Text;
         }

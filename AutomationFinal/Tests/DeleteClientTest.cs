@@ -29,7 +29,7 @@ namespace AutomationFinal.Tests
                 var accessLoginPage = new LoginPage(driver);
                 accessLoginPage.FillOutLoginData(loginInfo);
                 accessLoginPage.ClickLoginButton();
-                accessLoginPage.CheckClientPageTitle().ShouldBe("Clients");
+                accessLoginPage.GetClientPageTitle().ShouldBe("Clients");
 
                 //Add a new client (as you did it in test case SST-002)
                 var logClientPage = new AddClientPage(driver);

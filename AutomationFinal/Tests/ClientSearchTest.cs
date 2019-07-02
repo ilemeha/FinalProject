@@ -28,7 +28,7 @@ namespace AutomationFinal.Tests
                 var accessLoginPage = new LoginPage(driver);
                 accessLoginPage.FillOutLoginData(loginInfo);
                 accessLoginPage.ClickLoginButton();
-                accessLoginPage.CheckClientPageTitle().ShouldBe("Clients");
+                accessLoginPage.GetClientPageTitle().ShouldBe("Clients");
 
                 var clientSearchPage = new ClientSearchPage(driver);
                 clientSearchPage.SearchClientBox("ilka@mailinator.com");
